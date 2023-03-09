@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkScheduleWith12hShifts.Views.AboutPage"
+             xmlns:vm="clr-namespace:WorkScheduleWith12hShifts.ViewModels"
+             Title="Check the workschedule">
+             <!--Title="{Binding Title}"-->
+
+    <!--<ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout>
+            <Label Text="Working 12h during the Day, 24h Off, 12h Night and 48h Off" Margin="5, 15, 0, 20"
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+        
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <Label Text="Please fill the required date:" Margin="5, 0, 0, 20" />
+
+
+                <Grid  Margin="5, 0, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0" >
+                        <Label Margin="0, 5, 0, 0" Text="Start date working during the day"/>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Day apo Night?" />
+                            <Switch x:Name="dayNightSwitch" IsToggled="True"  Toggled="OnToggled"/>
+                            <!--OnColor="Green" ThumbColor="ForestGreen"-->
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+                        <DatePicker x:Name="startDatePicker"/>
+                    </StackLayout>
+                </Grid>
+
+
+                <Grid Margin="0, 15, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0">
+                        <Label  Margin="5, 15, 0, 0" Text="Check date"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+                        <DatePicker x:Name="checkDatePicker" />
+                    </StackLayout>
+                </Grid>
+                
+               
+                <Button Text="Check it" Clicked="OnCheckClicked"/>
+                <Label x:Name="resultLabel"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
